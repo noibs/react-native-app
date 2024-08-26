@@ -2,8 +2,7 @@
 
 A social media made for sharing and exploring lego builds.
 
-![logo](https://github.com/user-attachments/assets/2ad5639e-bbc2-4579-9928-24e28a601583)
-
+<img style="width: 300px" src="https://github.com/user-attachments/assets/2ad5639e-bbc2-4579-9928-24e28a601583" />
 
 ### Screenshots:
 
