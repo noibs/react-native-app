@@ -2,13 +2,12 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import { useState } from "react";
 
 import { icons } from "../constants";
-import { ResizeMode, Video } from "expo-av";
 
 const VideoCard = ({
   video: {
     title,
     thumbnail,
-    video,
+    prompt,
     creator: { username, avatar },
   },
 }) => {
@@ -47,37 +46,32 @@ const VideoCard = ({
         </View>
       </View>
 
-      {play ? (
-        <Video
-          source={{ uri: video }}
-          className="w-full h-60 rounded-xl mt-3"
-          resizeMode={ResizeMode.CONTAIN}
-          useNativeControls
-          shouldPlay
-          onPlaybackStatusUpdate={(status) => {
-            if (status.didJustFinish) {
-              setPlay(false);
-            }
-          }}
+      <TouchableOpacity
+        activeOpacity={1}
+        onPress={() => setPlay(true)}
+        className="w-full h-60 rounded-xl mt-3 relative justify-center items-center"
+      >
+        <Image
+          source={{ uri: thumbnail }}
+          className="w-full h-full rounded-xl mt-3"
+          resizeMode="cover"
         />
-      ) : (
-        <TouchableOpacity
-          activeOpacity={0.7}
-          onPress={() => setPlay(true)}
-          className="w-full h-60 rounded-xl mt-3 relative justify-center items-center"
-        >
-          <Image
-            source={{ uri: thumbnail }}
-            className="w-full h-full rounded-xl mt-3"
-            resizeMode="cover"
-          />
-          <Image
-            source={icons.play}
-            className="w-12 h-12 absolute"
-            resizeMode="contain"
-          />
-        </TouchableOpacity>
-      )}
+
+        {play && (
+          <TouchableOpacity
+            activeOpacity={1}
+            onPress={() => setPlay(false)}
+            className="w-full h-60 absolute rounded-xl mt-3 justify-center items-center"
+          >
+            <View
+              className="items-center justify-center bg-black-100 p-1"
+              style={{ backgroundColor: "rgba(30, 30, 45, 0.8)" }}
+            >
+              <Text className="text-white">{prompt}</Text>
+            </View>
+          </TouchableOpacity>
+        )}
+      </TouchableOpacity>
     </View>
   );
 };

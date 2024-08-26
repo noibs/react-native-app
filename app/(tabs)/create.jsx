@@ -49,7 +49,7 @@ const Create = () => {
   };
 
   const submit = async () => {
-    if (!form.prompt || !form.title || !form.thumbnail || !form.video) {
+    if (!form.prompt || !form.title || !form.thumbnail) {
       return Alert.alert("Please fill in all the fields.");
     }
 
@@ -90,35 +90,16 @@ const Create = () => {
           otherStyles="mt-10"
         />
 
-        <View className="mt-7 space-y-2">
-          <Text className="text-base text-green-100 font-pmedium">
-            Upload Video
-          </Text>
-          <TouchableOpacity onPress={() => openPicker("video")}>
-            {form.video ? (
-              <Video
-                source={{ uri: form.video.uri }}
-                className="w-full h-64 rounded-2xl"
-                resizeMode={ResizeMode.COVER}
-              />
-            ) : (
-              <View className="w-full h-40 px-4 bg-black-100 rounded-2xl justify-center items-center">
-                <View className="w-14 h-14 border border-dashed border-secondary-100 rounded-xl  justify-center items-center">
-                  <Image
-                    source={icons.upload}
-                    className="w-1/2 h-1/2"
-                    resizeMode="contain"
-                  />
-                </View>
-              </View>
-            )}
-          </TouchableOpacity>
-        </View>
+        <FormField
+          title="Build Description"
+          value={form.prompt}
+          placeholder="Explain your build"
+          handleChangeText={(e) => setForm({ ...form, prompt: e })}
+          otherStyles="mt-7"
+        />
 
         <View className="mt-7 space-y-2">
-          <Text className="text-base text-green-100 font-pmedium">
-            Thumbnail Image
-          </Text>
+          <Text className="text-base text-green-100 font-pmedium">Image</Text>
 
           <TouchableOpacity onPress={() => openPicker("image")}>
             {form.thumbnail ? (
@@ -128,7 +109,7 @@ const Create = () => {
                 className="w-full h-64 rounded-2xl"
               />
             ) : (
-              <View className="w-full h-16 px-4 bg-black-100 rounded-2xl justify-center items-center border-2 border-black-200 flex-row space-x-2">
+              <View className="w-full h-24 px-4 bg-black-100 rounded-2xl justify-center items-center border-2 border-black-200 flex-row space-x-2">
                 <Image
                   source={icons.upload}
                   className="w-5 h-5"
@@ -141,14 +122,6 @@ const Create = () => {
             )}
           </TouchableOpacity>
         </View>
-
-        <FormField
-          title="Build Description"
-          value={form.prompt}
-          placeholder="Explain your build"
-          handleChangeText={(e) => setForm({ ...form, prompt: e })}
-          otherStyles="mt-7"
-        />
 
         <CustomButton
           title="Submit & Publish"

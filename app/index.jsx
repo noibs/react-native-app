@@ -30,8 +30,8 @@ export default function App() {
 
           <View className="relative mt-5">
             <Text className="text-3xl text-white font-bold text-center">
-              Discover Endless Possibilities with{" "}
-              <Text className="text-secondary-200">Aora</Text>
+              Discover Endless Creativity with{" "}
+              <Text className="text-secondary-200">Bloxz</Text>
             </Text>
 
             <Image
@@ -42,8 +42,7 @@ export default function App() {
           </View>
 
           <Text className="text-sm font-pregular mt-7 text-gray-100 text-center">
-            Where creativity meets innovation: embark on a journey of limitless
-            exploration with Aora
+            The best place to share your passion for little plastic bricks
           </Text>
 
           <CustomButton
